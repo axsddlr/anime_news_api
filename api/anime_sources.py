@@ -27,7 +27,7 @@ class Ani:
                     "description": description,
                     "url": url,
                 })
-        return all_entries
+        return results
 
     @staticmethod
     def get_mal_entires():
