@@ -7,11 +7,13 @@ headers = {
 }
 
 
-def get_feed(url):
-    urls = url
+def get_feed(url) -> list:
+    urls = (
+        url,
+    )
 
     # get the RSS feeds from feedparser
-    feeds = [feedparser.parse(links) for links in urls]
+    feeds = [feedparser.parse(url) for url in urls]
     all_entries = [feed.entries for feed in feeds]
 
     return all_entries

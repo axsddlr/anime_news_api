@@ -4,6 +4,7 @@ from utils.utils import get_feed
 
 
 class Ani:
+
     @staticmethod
     def get_ann_entires():
         all_entries = get_feed("https://www.animenewsnetwork.com/all/rss.xml?ann-edition=w")
@@ -26,7 +27,7 @@ class Ani:
                     "description": description,
                     "url": url,
                 })
-        return results
+        return all_entries
 
     @staticmethod
     def get_mal_entires():
@@ -70,4 +71,4 @@ class Ani:
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print(Ani.get_crunchy_entires())
+    print(Ani.get_ann_entires())
