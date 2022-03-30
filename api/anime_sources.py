@@ -7,7 +7,7 @@ class Ani:
 
     @staticmethod
     def get_ann_entires():
-        all_entries = get_feed("https://www.animenewsnetwork.com/all/rss.xml?ann-edition=w")
+        all_entries = get_feed("https://www.animenewsnetwork.com/news/rss.xml?ann-edition=us")
 
         results = []
         for entries in all_entries:
@@ -68,7 +68,27 @@ class Ani:
                 })
         return results
 
+    @staticmethod
+    def get_otakumode_entires():
+        all_entries = get_feed("https://otakumode.com/news/feed")
+
+        results = []
+        for entries in all_entries:
+            for entry in entries:
+                if entry.enclosures:
+                    enclosure_href = entry.enclosures[0]['img']
+                else:
+                    enclosure_href = ''
+                results.append({
+                    "title": entry.title,
+                    "url": entry.link.split("?")[0],
+                    "summary": entry.summary,
+                    "thumbnail": enclosure_href,
+                    "date": entry.published,
+                })
+        return results
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print(Ani.get_ann_entires())
+    print(Ani.get_otakumode_entires())

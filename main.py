@@ -58,5 +58,14 @@ def crunchyroll_anime_news():
     return anime.get_crunchy_entires()
 
 
+@limits(calls=250, period=TWO_MINUTES)
+@app.get("/otakumode", tags=["News"])
+def otakumode_anime_news():
+    """
+    News and Updates
+    """
+    return anime.get_otakumode_entires()
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=3000)
